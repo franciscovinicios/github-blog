@@ -1,11 +1,13 @@
 import { Header } from "../../components/Header";
 import { Profile } from "../../components/Profile";
+import { ItemPublication } from "./components/ItemPublication";
 import {
   Container,
   Details,
   InputStyled,
   NumberPublications,
   Publications,
+  PublicationsContent,
   TextSection,
 } from "./styles";
 
@@ -31,6 +33,13 @@ export function Home() {
           </Details>
 
           <InputStyled placeholder="Search content" />
+
+          <PublicationsContent>
+            <ItemPublication />
+            <ItemPublication />
+            <ItemPublication />
+            <ItemPublication />
+          </PublicationsContent>
         </Publications>
       </Container>
     </>
