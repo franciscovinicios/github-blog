@@ -73,11 +73,3 @@ export const Infos = styled.div`
   display: flex;
   gap: 1.5rem;
 `;
-
-export const ItemInfo = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-`;
-
-export const TitleInfo = styled.span``;

@@ -1,20 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons/faArrowUpRightFromSquare";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faBuilding } from "@fortawesome/free-regular-svg-icons";
+import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
 import {
   DescriptionProfile,
   GithubProfile,
   ImageProfileContent,
   Infos,
-  ItemInfo,
   ProfileContainer,
   SocialTitle,
   Subtitle,
   Title,
-  TitleInfo,
 } from "./styles";
-import { faBuilding } from "@fortawesome/free-regular-svg-icons";
-import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
+import { ItemInfo } from "../ItemInfo";
 
 interface ProfileProps {
   name: string;
@@ -54,18 +53,10 @@ export function Profile({
         <Subtitle>{description}</Subtitle>
 
         <Infos>
-          <ItemInfo>
-            <FontAwesomeIcon icon={faGithub} width={18} />
-            <TitleInfo>{user}</TitleInfo>
-          </ItemInfo>
-          <ItemInfo>
-            <FontAwesomeIcon icon={faBuilding} width={18} />
-            <TitleInfo>{company}</TitleInfo>
-          </ItemInfo>
-          <ItemInfo>
-            <FontAwesomeIcon icon={faUserGroup} width={18} />
-            <TitleInfo>{followers} seguidores</TitleInfo>
-          </ItemInfo>
+          <ItemInfo title={user} icon={faGithub} />
+          <ItemInfo title={company} icon={faBuilding} />
+
+          <ItemInfo title={`seguidores ${followers}`} icon={faUserGroup} />
         </Infos>
       </DescriptionProfile>
     </ProfileContainer>
