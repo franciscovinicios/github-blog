@@ -2,13 +2,11 @@ import styled from "styled-components";
 
 export const ProfileContainer = styled.div`
   position: relative;
-  margin: -6rem auto;
+  margin-top: -6rem;
   display: flex;
   gap: 2rem;
-  max-width: 54rem;
   border-radius: 10px;
   padding: 2.5rem 2rem 2rem 2.5rem;
-  overflow: hidden;
 
   background: ${({ theme }) => theme["base-profile"]};
 `;
