@@ -8,6 +8,7 @@ import {
   NumberPublications,
   Publications,
   PublicationsContent,
+  SearchFormContainer,
   TextSection,
 } from "./styles";
 
@@ -31,8 +32,9 @@ export function Home() {
             <TextSection>Publications</TextSection>
             <NumberPublications>1 publications</NumberPublications>
           </Details>
-
-          <InputStyled placeholder="Search content" />
+          <SearchFormContainer>
+            <InputStyled placeholder="Search content" />
+          </SearchFormContainer>
 
           <PublicationsContent>
             <ItemPublication />

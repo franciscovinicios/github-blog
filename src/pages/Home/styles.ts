@@ -10,6 +10,8 @@ export const Publications = styled.section`
   margin-top: 4.5rem;
 `;
 
+export const SearchFormContainer = styled.form``;
+
 export const InputStyled = styled.input`
   margin-top: 0.75rem;
   width: 100%;
@@ -18,6 +20,8 @@ export const InputStyled = styled.input`
   border: 1px solid ${({ theme }) => theme["base-border"]};
   border-radius: 6px;
   padding: 0.75rem 1rem;
+
+  color: ${({ theme }) => theme["base-text"]};
 
   &::placeholder {
     color: ${({ theme }) => theme["base-label"]};

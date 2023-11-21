@@ -8,6 +8,11 @@ export const Container = styled.div`
   border-radius: 10px;
   background: ${({ theme }) => theme["base-post"]};
 
+  &:hover {
+    border: 2px solid ${({ theme }) => theme["base-label"]};
+    transition: 0.2s;
+  }
+
   cursor: pointer;
 
   a {

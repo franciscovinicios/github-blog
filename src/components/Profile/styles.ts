@@ -52,6 +52,11 @@ export const GithubProfile = styled.button`
   svg {
     color: ${({ theme }) => theme.blue};
   }
+
+  &:hover {
+    transition: 0.2s;
+    border-bottom: 2px solid ${({ theme }) => theme.blue};
+  }
 `;
 
 export const SocialTitle = styled.span`
