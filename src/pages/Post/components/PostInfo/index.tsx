@@ -7,19 +7,24 @@ import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons/faAr
 import { ItemInfo } from "../../../../components/ItemInfo";
 import { faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { faComment } from "@fortawesome/free-regular-svg-icons";
+import { NavLink } from "react-router-dom";
 
 export function PostInfo() {
   return (
     <Container>
       <header>
-        <Option>
-          <FontAwesomeIcon icon={faChevronLeft} width={12} />
-          <span>Voltar</span>
-        </Option>
-        <Option>
-          <span>Ver no github</span>
-          <FontAwesomeIcon icon={faArrowUpRightFromSquare} width={12} />
-        </Option>
+        <NavLink to={"/"} title="voltar">
+          <Option>
+            <FontAwesomeIcon icon={faChevronLeft} width={12} />
+            <span>Voltar</span>
+          </Option>
+        </NavLink>
+        <NavLink to={"/"}>
+          <Option>
+            <span>Ver no github</span>
+            <FontAwesomeIcon icon={faArrowUpRightFromSquare} width={12} />
+          </Option>
+        </NavLink>
       </header>
 
       <Title>JavaScript data types and data structures</Title>
