@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  margin-top: -5.5rem;
   background: ${({ theme }) => theme["base-profile"]};
   width: 54rem;
   padding: 2rem;
+  border-radius: 10px;
 
   header {
     display: flex;
