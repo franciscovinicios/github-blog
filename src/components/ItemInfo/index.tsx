@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ItemInfoContainer, TitleInfo } from "./styles";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 interface ItemInfoProps {
-  title: string;
+  title?: string;
   icon: IconProp;
 }
 export function ItemInfo({ title, icon }: ItemInfoProps) {

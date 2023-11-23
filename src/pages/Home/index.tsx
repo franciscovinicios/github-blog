@@ -1,3 +1,4 @@
+import { useForm } from "react-hook-form";
 import { Header } from "../../components/Header";
 import { Profile } from "../../components/Profile";
 import { ItemPublication } from "./components/ItemPublication";
@@ -13,6 +14,8 @@ import {
 } from "./styles";
 
 export function Home() {
+  const { register } = useForm({});
+
   return (
     <>
       <Header />
@@ -33,7 +36,7 @@ export function Home() {
             <NumberPublications>1 publications</NumberPublications>
           </Details>
           <SearchFormContainer>
-            <InputStyled placeholder="Search content" />
+            <InputStyled placeholder="Search content" {...register("query")} />
           </SearchFormContainer>
 
           <PublicationsContent>

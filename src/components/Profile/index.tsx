@@ -14,49 +14,62 @@ import {
   Title,
 } from "./styles";
 import { ItemInfo } from "../ItemInfo";
+import { api } from "../../lib/axios";
+import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
-interface ProfileProps {
+interface User {
   name: string;
-  link?: string;
-  description: string;
-  user: string;
+  login: string;
+  followers: string;
+  avatar_url: string;
+  bio: string;
   company: string;
-  followers: number;
+  html_url: string;
 }
 
-export function Profile({
-  name,
-  description,
-  user,
-  company,
-  followers,
-}: ProfileProps) {
+export function Profile() {
+  const [user, setUser] = useState<User>();
+
+  async function fetchTransactions() {
+    const response = await api.get("/franciscovinicios");
+    console.log(response.data);
+    setUser(response.data);
+  }
+
+  useEffect(() => {
+    fetchTransactions();
+  }, []);
   return (
     <ProfileContainer>
       <ImageProfileContent>
-        <img
-          src="https://avatars.githubusercontent.com/u/35700027?s=200&v=4"
-          alt=""
-        />
+        <img src={user?.avatar_url} alt="" />
       </ImageProfileContent>
 
       <DescriptionProfile>
         <header>
-          <Title>{name}</Title>
+          <Title>{user?.name}</Title>
 
-          <GithubProfile>
-            <FontAwesomeIcon icon={faArrowUpRightFromSquare} width={12} />
-            <SocialTitle>github</SocialTitle>
-          </GithubProfile>
+          <NavLink
+            to={user ? user.html_url : "https://github.com/franciscovinicios"}
+          >
+            <GithubProfile>
+              <FontAwesomeIcon icon={faArrowUpRightFromSquare} width={12} />
+              <SocialTitle>github</SocialTitle>
+            </GithubProfile>
+          </NavLink>
         </header>
 
-        <Subtitle>{description}</Subtitle>
+        <Subtitle>{user?.bio}</Subtitle>
 
         <Infos>
-          <ItemInfo title={user} icon={faGithub} />
-          <ItemInfo title={company} icon={faBuilding} />
+          <ItemInfo title={user?.login} icon={faGithub} />
+          <ItemInfo title={user?.company} icon={faBuilding} />
 
-          <ItemInfo title={`seguidores ${followers}`} icon={faUserGroup} />
+          <ItemInfo
+            title={`seguidores ${user?.followers}`}
+            icon={faUserGroup}
+          />
         </Infos>
       </DescriptionProfile>
     </ProfileContainer>
