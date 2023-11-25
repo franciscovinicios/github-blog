@@ -31,8 +31,8 @@ interface User {
 export function Profile() {
   const [user, setUser] = useState({} as User);
 
-  async function getUser() {
-    const { data } = await api.get<User>("/users/franciscovinicios");
+  async function getUser(userName: string) {
+    const { data } = await api.get<User>(`/users/${userName}`);
     setUser({
       name: data.name,
       login: data.login,
@@ -45,7 +45,7 @@ export function Profile() {
   }
 
   useEffect(() => {
-    getUser();
+    getUser("franciscovinicios");
   }, []);
   return (
     <ProfileContainer>
