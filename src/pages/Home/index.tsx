@@ -25,14 +25,15 @@ type SearchFormInputs = z.infer<typeof searchFormSchema>;
 interface Issues {
   title: string;
   body: string;
+  number: number;
 }
 
 export function Home() {
   const [issues, setIssues] = useState<Issues[]>([]);
-  console.log(issues);
+
   const { register, handleSubmit } = useForm<SearchFormInputs>({});
 
-  async function fetchIssues() {
+  async function fetchAllIssues() {
     const response = await api.get(`search/issues`, {
       params: {
         q: `repo:franciscovinicios/github-blog`,
@@ -42,12 +43,19 @@ export function Home() {
     setIssues(response.data.items);
   }
 
-  async function handleSearchIssues() {
-    await fetchIssues();
+  async function handleSearchIssues(data: SearchFormInputs) {
+    const response = await api.get(`search/issues`, {
+      params: {
+        q: `repo:franciscovinicios/github-blog ${data.query}`,
+      },
+    });
+
+    setIssues(response.data.items);
+    console.log(response.data);
   }
 
   useEffect(() => {
-    fetchIssues();
+    fetchAllIssues();
   }, []);
 
   return (
@@ -67,7 +75,12 @@ export function Home() {
 
           <PublicationsContent>
             {issues.map((issue) => (
-              <ItemPublication title={issue.title} body={issue.body} />
+              <ItemPublication
+                key={issue.title}
+                title={issue.title}
+                body={issue.body}
+                number={issue.number}
+              />
             ))}
           </PublicationsContent>
         </Publications>

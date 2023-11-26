@@ -6,10 +6,12 @@ import {
   PublicationDate,
   Title,
 } from "./styled";
+import Markdown from "react-markdown";
 
 interface ItemPublicationProps {
   title: string;
   body: string;
+  number: number;
 }
 export function ItemPublication({ title, body }: ItemPublicationProps) {
   return (
@@ -17,11 +19,15 @@ export function ItemPublication({ title, body }: ItemPublicationProps) {
       <NavLink to={"/post"}>
         <Content>
           <header>
-            <Title>{title}</Title>
+            <Title>
+              <Markdown>{title}</Markdown>
+            </Title>
 
             <PublicationDate>ha 1 dia</PublicationDate>
           </header>
-          <Description>{body}</Description>
+          <Description>
+            <Markdown>{body}</Markdown>
+          </Description>
         </Content>
       </NavLink>
     </Container>

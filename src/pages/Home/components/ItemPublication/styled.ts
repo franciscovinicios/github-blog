@@ -44,7 +44,7 @@ export const PublicationDate = styled.span`
   line-height: 1.4rem;
 `;
 
-export const Description = styled.p`
+export const Description = styled.section`
   margin-top: 1.25rem;
   display: -webkit-box;
   -webkit-box-orient: vertical;
