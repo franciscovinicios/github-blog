@@ -15,6 +15,7 @@ import {
 } from "./styles";
 import { useEffect, useState } from "react";
 import { api } from "../../lib/axios";
+import { useNavigate } from "react-router-dom";
 
 const searchFormSchema = z.object({
   query: z.string(),
@@ -26,32 +27,33 @@ interface Issues {
   title: string;
   body: string;
   number: number;
+  created_at: string;
 }
 
 export function Home() {
+  const navigate = useNavigate();
   const [issues, setIssues] = useState<Issues[]>([]);
+
+  const handleDetails = (id: string) => {
+    navigate(`/details/${id}`);
+  };
 
   const { register, handleSubmit } = useForm<SearchFormInputs>({});
 
-  async function fetchAllIssues() {
+  async function fetchAllIssues(query?: string) {
+    const queryParams = query
+      ? { q: `repo:franciscovinicios/github-blog ${query}` }
+      : { q: `repo:franciscovinicios/github-blog` };
+
     const response = await api.get(`search/issues`, {
-      params: {
-        q: `repo:franciscovinicios/github-blog`,
-      },
+      params: queryParams,
     });
 
     setIssues(response.data.items);
   }
 
   async function handleSearchIssues(data: SearchFormInputs) {
-    const response = await api.get(`search/issues`, {
-      params: {
-        q: `repo:franciscovinicios/github-blog ${data.query}`,
-      },
-    });
-
-    setIssues(response.data.items);
-    console.log(response.data);
+    fetchAllIssues(data.query);
   }
 
   useEffect(() => {
@@ -67,7 +69,9 @@ export function Home() {
         <Publications>
           <Details>
             <TextSection>Publications</TextSection>
-            <NumberPublications>1 publications</NumberPublications>
+            <NumberPublications>
+              {issues.length} publications
+            </NumberPublications>
           </Details>
           <SearchFormContainer onSubmit={handleSubmit(handleSearchIssues)}>
             <InputStyled placeholder="Search content" {...register("query")} />
@@ -76,10 +80,12 @@ export function Home() {
           <PublicationsContent>
             {issues.map((issue) => (
               <ItemPublication
+                created_at={issue.created_at}
                 key={issue.title}
                 title={issue.title}
                 body={issue.body}
                 number={issue.number}
+                onClick={() => handleDetails(String(issue.number))}
               />
             ))}
           </PublicationsContent>

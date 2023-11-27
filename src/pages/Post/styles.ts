@@ -11,28 +11,24 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
   padding: 2rem;
-`;
+  text-align: center;
 
-export const Paragraph = styled.p`
-  span.bold {
-    font-size: 1rem;
-    font-weight: 700;
+  h4 {
+    font-size: 1.5rem;
   }
 
-  a.blue-bold {
+  p {
+    margin: 1rem 0;
+  }
+  code {
     display: block;
-    margin-top: 2rem;
-    color: ${({ theme }) => theme.blue};
-    font-size: 1rem;
-    font-weight: 700;
+    border-radius: 2px;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: ${({ theme }) => theme["base-post"]};
   }
-`;
-
-export const Code = styled.code`
-  display: block;
-  border-radius: 2px;
-  margin-top: 1.5rem;
-  padding: 1rem;
-  background: ${({ theme }) => theme["base-post"]};
 `;

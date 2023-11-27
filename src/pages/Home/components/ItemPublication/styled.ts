@@ -7,10 +7,11 @@ export const Container = styled.div`
   flex-direction: column;
   border-radius: 10px;
   background: ${({ theme }) => theme["base-post"]};
+  border: 2px solid ${({ theme }) => theme["base-post"]};
 
   &:hover {
     border: 2px solid ${({ theme }) => theme["base-label"]};
-    transition: 0.2s;
+    transition: border 0.2s;
   }
 
   cursor: pointer;

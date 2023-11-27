@@ -8,8 +8,32 @@ import { ItemInfo } from "../../../../components/ItemInfo";
 import { faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { faComment } from "@fortawesome/free-regular-svg-icons";
 import { NavLink } from "react-router-dom";
+import { formatDistanceToNow } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 
-export function PostInfo() {
+interface Issue {
+  title: string;
+  body: string;
+  number: number;
+  html_url: string;
+  comments: number;
+  created_at: string;
+  user: {
+    login: string;
+  };
+}
+interface PostInfoProps {
+  data: Issue;
+}
+
+export function PostInfo({ data }: PostInfoProps) {
+  const formatedDate =
+    data.created_at &&
+    formatDistanceToNow(new Date(data.created_at), {
+      locale: ptBR,
+      addSuffix: true,
+    });
+
   return (
     <Container>
       <header>
@@ -19,7 +43,7 @@ export function PostInfo() {
             <span>Voltar</span>
           </Option>
         </NavLink>
-        <NavLink to={"/"}>
+        <NavLink to={data.html_url}>
           <Option>
             <span>Ver no github</span>
             <FontAwesomeIcon icon={faArrowUpRightFromSquare} width={12} />
@@ -27,11 +51,11 @@ export function PostInfo() {
         </NavLink>
       </header>
 
-      <Title>JavaScript data types and data structures</Title>
+      <Title>{data.title}</Title>
       <Details>
-        <ItemInfo title="vinicios" icon={faGithub} />
-        <ItemInfo title="ha 1 dia" icon={faCalendarDay} />
-        <ItemInfo title="5 comentários" icon={faComment} />
+        <ItemInfo title={data.user?.login} icon={faGithub} />
+        <ItemInfo title={formatedDate} icon={faCalendarDay} />
+        <ItemInfo title={String(data.comments)} icon={faComment} />
       </Details>
     </Container>
   );
