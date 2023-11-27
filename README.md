@@ -2,7 +2,7 @@
 <img src="https://i.ibb.co/Ryw6y0s/Logo-2.png"  />
 </div>
 <h3 align="center">
-dtmoney is application to control your personal finances
+This application is a platform that uses the GitHub API to fetch and display issues from a specific repository, as well as user profile data.
 </h3>
 
 <h4 align="center"> 
@@ -25,15 +25,12 @@ The following tools were used in the construction of the project:
 
 -   **Vite**
 -   **React**
--   **Context Api**
--   **LocaStorage**
 -   **TypeScript**
 -   **Styled Components**
 -   **React Hook Form**
 -   **React Router Dom**
--   **Use Context Selector**
 -   **Axios**
--   **Radix-ui**
+-   **React Markdown**
 -   **Phosphor-React**
 
 ## Layout
@@ -41,13 +38,13 @@ The following tools were used in the construction of the project:
 * **Home**
 <br/>
 
-![Home](https://i.ibb.co/ZN4qkZY/screencapture-localhost-5173-2023-11-27-16-24-29.png)
+![Home](https://thumbs2.imgbox.com/e7/10/fFnzT2I9_t.png)
 <br/>
 
-* **New Transaction**
+* **Post**
 <br/>
 
-![Post](https://i.ibb.co/GWL7Yjg/post.png)
+![Post](https://thumbs2.imgbox.com/63/a1/kANtfcDH_t.png)
 
 <br/>
 
@@ -68,8 +65,8 @@ The project can be built with npm or yarn, so choose one of the approach bellow 
 * To download the project follow the instructions bellow:
 
 ```
-1. git clone https://github.com/franciscovinicios/dtmoney-react.git
-2. cd dtmoney-react
+1. git clone https://github.com/franciscovinicios/github-blog.git
+2. cd github-blog
 ```
 
 * Install the dependencies and start the project:
